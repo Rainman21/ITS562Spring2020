@@ -1,0 +1,19 @@
+{
+  "name": "samplejs",
+  "version": "1.0.0",
+  "description": "Class team github for doing a COVID site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rainman21/ITS562Spring2020.git"
+  },
+  "author": "Jonathan Oak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rainman21/ITS562Spring2020/issues"
+  },
+  "homepage": "https://github.com/Rainman21/ITS562Spring2020#readme"
+}
