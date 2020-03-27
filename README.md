@@ -1,17 +1,22 @@
 # ITS562Spring2020
+
 Class team github for doing a COVID site
 
 ## Samples
+
 + [Calculator no Style](/SamplesBasicHTML/calculator_nostyle.html)
++ [Bootstrap Template](SampleBootstrap/basicBootstrap.html)
++ [Bootstrap Gallery](SampleBootstrap/BootstrapGallery.html)
 
 ## Site Links
+
 enter link to your site - note they can be relative...
-i.e. just the page name, or if it is in a sub folder 
+i.e. just the page name, or if it is in a sub folder
 (/Covid/covid.html)
 
 ## Student Readme files
 
-We link from this readme, to your readme... 
+We link from this readme, to your readme...
 
 + [Amenu Readme](/Students/Amenu/Readme.md)
 + [Chris Readme](/Students/Chris/Readme.md)
@@ -26,6 +31,11 @@ Link to your pages here
 ## Links
 
 Follow the pattern - enter your reference links here
-### Covid
- + [Microsoft](https://www.microsoft.com/en-us/research/project/academic/articles/microsoft-academic-resources-and-their-application-to-covid-19-research/)
 
+### Bootstrap
+
+[Bootstrap Getting Started](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
+
+### Covid
+
++ [Microsoft](https://www.microsoft.com/en-us/research/project/academic/articles/microsoft-academic-resources-and-their-application-to-covid-19-research/)

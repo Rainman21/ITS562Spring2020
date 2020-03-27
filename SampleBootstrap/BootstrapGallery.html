@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <header>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" id="nav1" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav2" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav3" href="#">Link</a>
+        </li>
+        <li class="nav-item" id="nav4" >
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+    </header>
+    
+
+    <div class="container">
+      <h1>Put your content here</h1>
+      reference https://getbootstrap.com/docs/4.1/components
+      <h1>Alerts</h1>
+      <div>
+        <div class="alert alert-primary" role="alert">
+          A simple primary alert—check it out!
+        </div>
+        <div class="alert alert-secondary" role="alert">
+          A simple secondary alert—check it out!
+        </div>
+        <div class="alert alert-success" role="alert">
+          A simple success alert—check it out!
+        </div>
+        <div class="alert alert-danger" role="alert">
+          A simple danger alert—check it out!
+        </div>
+        <div class="alert alert-warning" role="alert">
+          A simple warning alert—check it out!
+        </div>
+        <div class="alert alert-info" role="alert">
+          A simple info alert—check it out!
+        </div>
+        <div class="alert alert-light" role="alert">
+          A simple light alert—check it out!
+        </div>
+        <div class="alert alert-dark" role="alert">
+          A simple dark alert—check it out!
+        </div>
+      </div>
+      <h1>Badges</h1>
+      <div>
+        <button type="button" class="btn btn-primary">
+          Notifications <span class="badge badge-light">4</span>
+        </button>
+      </div>
+      <h1>Input Groups</h1>
+      <div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Recipient's username"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">@example.com</span>
+          </div>
+        </div>
+
+        <label for="basic-url">Your vanity URL</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3"
+              >https://example.com/users/</span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="basic-url"
+            aria-describedby="basic-addon3"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Amount (to the nearest dollar)"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">With textarea</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("#nav1").click((source) =>{
+        if($("#nav1").hasClass("active")){
+          $("#nav1").removeClass("active")
+        }else{
+          $("#nav1").addClass("active")
+        }
+          
+      })
+      
+    </script>
+  </body>
+</html>
