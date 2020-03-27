@@ -13,11 +13,11 @@ i.e. just the page name, or if it is in a sub folder
 
 We link from this readme, to your readme... 
 
-[Amenu Readme](/Students/Amenu/Readme.md)
-[Chris Readme](/Students/Chris/Readme.md)
-[Cihan Readme](/Students/Cihan/Readme.md)
-[Jonatas Readme](/Students/Jonatas/jonatas.md)
-[Michael Readme](/Students/Michael/Readme.md)
++ [Amenu Readme](/Students/Amenu/Readme.md)
++ [Chris Readme](/Students/Chris/Readme.md)
++ [Cihan Readme](/Students/Cihan/Readme.md)
++ [Jonatas Readme](/Students/Jonatas/jonatas.md)
++ [Michael Readme](/Students/Michael/Readme.md)
 
 ## Student Pages
 
