@@ -1,5 +1,5 @@
-# Your name here
+# Mike Battcock
 
-Merge your individual markedown here to link to your assignments in this folder
+Helpful stuff and markdown
 
-## Links
+# 
