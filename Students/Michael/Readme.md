@@ -1,5 +1,7 @@
-# Your name here
+# Mike Battcock
 
-Merge your individual markedown here to link to your assignments in this folder
+Helpful stuff and markdown
 
-## Links
+# Links
+https://gist.github.com/candyflossuk/db01dd609d9f01c6f864004dd0fefe63
+https://learngitbranching.js.org/?locale=en_US
