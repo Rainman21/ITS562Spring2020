@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body *{
+        box-sizing: content-box;
+      }
+
+      body  {
+        margin: 0;
+        font-family: 'Nunito';
+        background: #eeeeee;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 10px;
+        padding: 10px;
+      }
+
+      .container {
+        padding: 13m;
+        border-radius: 0.5em;
+        box-shadow: -12px -12px 12px 0 rgba(255, 255, 255, 1),
+          12px 12px 12px 0 rgba(0, 0, 0, 0.3);
+      }
+      .calc-control > button,
+      .calc-control > input
+       {
+        /* padding: 13m; */
+        height: 2em;
+        width: 4em;
+        margin-left: 0.2em;
+        border-radius: 0.5em;
+        box-shadow: -4px -4px 4px 0 rgba(255, 255, 255, 1),
+          4px 4px 4px 0 rgba(0, 0, 0, 0.3);
+      }
+      #mainText {
+      width: 80%;
+      margin: .5em;
+      padding-left: 0.3rem;
+    }
+    </style>
+  </head>
+  <body>
+    <header>Calculator</header>
+    <content class="container">
+      <div class="calc-control">
+        <input type="text"  , id="mainText" />
+      </div>
+      <div class="grid-container calc-control">
+          <button onclick="onClickNumber(1)">1</button>
+          <button onclick="onClickNumber(2)">2</button>
+          <button onclick="onClickNumber(3)">3</button>
+          <button onclick="onClear()">C</button>
+          <button onclick="onClickNumber(4)">4</button>
+          <button onclick="onClickNumber(5)">5</button>
+          <button onclick="onClickNumber(6)">6</button>
+          <button onclick="plus()">+</button>
+          <button onclick="onClickNumber(7)">7</button>
+          <button onclick="onClickNumber(8)">8</button>
+          <button onclick="onClickNumber(9)">9</button>
+          <button onclick="minus()">-</button>
+          <button onclick="onClickNumber('.')">.</button>
+          <button onclick="onClickNumber(0)">0</button>
+          <button onclick="changeSign()">+/-</button>
+          <button onclick="equals()">=</button>
+        </div>
+      </div>
+    </content>
+    <footer>by me</footer>
+  </body>
+  <script>
+    const addTextToInput = function(digit) {
+      let mainText = document.getElementById('mainText');
+      mainText.value = mainText.value + digit;
+    };
+    const getValue = function() {
+      return +mainText.value;
+    };
+    const setValue = function(numericalValue) {
+      mainText.value = numericalValue.toString();
+    };
+    const changeSign = function() {
+      mainText.value = -mainText.value;
+    };
+    const clear = function() {
+      mainText.value = '';
+    };
+    var accumulator = 0;
+    var operation = '';
+    const minus = function() {
+      accumulator = getValue();
+      operation = 'minus';
+      clear();
+    };
+    const plus = function() {
+      accumulator = getValue();
+      operation = 'plus';
+      clear();
+    };
+    const onClear = function(){
+      clear();
+    }
+    const equals = function() {
+      switch (operation) {
+        case 'minus':
+          setValue(accumulator - getValue());
+          break;
+        case 'plus':
+          setValue(accumulator + getValue());
+          break;
+      }
+    };
+    const onClickNumber = function(digit) {
+      addTextToInput(digit);
+    };
+  </script>
+</html>

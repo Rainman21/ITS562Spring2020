@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <header>Calculator</header>
+    <content class="container">
+      <div class="calc-control">
+        <input type="text"  , id="mainText" />
+      </div>
+      <div class="grid-container calc-control">
+          <button onclick="onClickNumber(1)">1</button>
+          <button onclick="onClickNumber(2)">2</button>
+          <button onclick="onClickNumber(3)">3</button>
+          <button onclick="onClear()">C</button>
+          <button onclick="onClickNumber(4)">4</button>
+          <button onclick="onClickNumber(5)">5</button>
+          <button onclick="onClickNumber(6)">6</button>
+          <button onclick="plus()">+</button>
+          <button onclick="onClickNumber(7)">7</button>
+          <button onclick="onClickNumber(8)">8</button>
+          <button onclick="onClickNumber(9)">9</button>
+          <button onclick="minus()">-</button>
+          <button onclick="onClickNumber('.')">.</button>
+          <button onclick="onClickNumber(0)">0</button>
+          <button onclick="changeSign()">+/-</button>
+          <button onclick="equals()">=</button>
+        </div>
+      </div>
+    </content>
+    <footer>by me</footer>
+  </body>
+  <script>
+    const addTextToInput = function(digit) {
+      let mainText = document.getElementById('mainText');
+      mainText.value = mainText.value + digit;
+    };
+    const getValue = function() {
+      return +mainText.value;
+    };
+    const setValue = function(numericalValue) {
+      mainText.value = numericalValue.toString();
+    };
+    const changeSign = function() {
+      mainText.value = -mainText.value;
+    };
+    const clear = function() {
+      mainText.value = '';
+    };
+    var accumulator = 0;
+    var operation = '';
+    const minus = function() {
+      accumulator = getValue();
+      operation = 'minus';
+      clear();
+    };
+    const plus = function() {
+      accumulator = getValue();
+      operation = 'plus';
+      clear();
+    };
+    const onClear = function(){
+      clear();
+    }
+    const equals = function() {
+      switch (operation) {
+        case 'minus':
+          setValue(accumulator - getValue());
+          break;
+        case 'plus':
+          setValue(accumulator + getValue());
+          break;
+      }
+    };
+    const onClickNumber = function(digit) {
+      addTextToInput(digit);
+    };
+  </script>
+</html>
