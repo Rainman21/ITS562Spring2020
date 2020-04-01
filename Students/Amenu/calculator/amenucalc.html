@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      {
+  box-sizing: border-box;
+  
+}
+
+body {
+ 
+  background: #;
+   padding-bottom: 40px;
+  padding-top: 30px;
+  
+}
+
+.calculator{
+  max-width: 400px;
+  margin: 2 auto;
+  border: 4px solid #114;
+  border-radius: 5px;
+}
+
+.calculator input {
+  backgorund: none;
+  border: none;
+  box-shadow: none;
+  widith: 100%;
+  border-bottom: 2px solid #115;
+  padding: 40px;
+  text-align: right;
+  font-size: 25px;
+  
+  
+}
+
+.calc-control{
+  padding: 10px;
+  display: grid;
+  
+  grip-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.calc-button{
+  background: rgba(0,0,0,0.5);
+  border: 2px solid #111;
+  padding: 15px;
+  color: #EEE;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  
+}
+
+.is-clear,
+.is-zero{
+
+  grid-column: span 3;
+  
+}
+
+.is-clear{
+  background:#32678d;
+}
+
+.is-equals{
+  background: #28d606
+}
+    </style>
+  </head>
+  <body>
+    <header>Calculator</header>
+    <content class="container">
+      <div class="calc-control">
+        <input type="text"  , id="mainText" />
+      </div>
+      <div class="grid-container calc-control">
+          <button onclick="onClickNumber(1)">1</button>
+          <button onclick="onClickNumber(2)">2</button>
+          <button onclick="onClickNumber(3)">3</button>
+          <button onclick="onClear()">C</button>
+          <button onclick="onClickNumber(4)">4</button>
+          <button onclick="onClickNumber(5)">5</button>
+          <button onclick="onClickNumber(6)">6</button>
+          <button onclick="plus()">+</button>
+          <button onclick="onClickNumber(7)">7</button>
+          <button onclick="onClickNumber(8)">8</button>
+          <button onclick="onClickNumber(9)">9</button>
+          <button onclick="minus()">-</button>
+          <button onclick="onClickNumber('.')">.</button>
+          <button onclick="onClickNumber(0)">0</button>
+          <button onclick="changeSign()">+/-</button>
+          <button onclick="equals()">=</button>
+        </div>
+      </div>
+    </content>
+    <footer>by me</footer>
+  </body>
+  <script>
+    const addTextToInput = function(digit) {
+      let mainText = document.getElementById('mainText');
+      mainText.value = mainText.value + digit;
+    };
+    const getValue = function() {
+      return +mainText.value;
+    };
+    const setValue = function(numericalValue) {
+      mainText.value = numericalValue.toString();
+    };
+    const changeSign = function() {
+      mainText.value = -mainText.value;
+    };
+    const clear = function() {
+      mainText.value = '';
+    };
+    var accumulator = 0;
+    var operation = '';
+    const minus = function() {
+      accumulator = getValue();
+      operation = 'minus';
+      clear();
+    };
+    const plus = function() {
+      accumulator = getValue();
+      operation = 'plus';
+      clear();
+    };
+    const onClear = function(){
+      clear();
+    }
+    const equals = function() {
+      switch (operation) {
+        case 'minus':
+          setValue(accumulator - getValue());
+          break;
+        case 'plus':
+          setValue(accumulator + getValue());
+          break;
+      }
+    };
+    const onClickNumber = function(digit) {
+      addTextToInput(digit);
+    };
+  </script>
+</html>
