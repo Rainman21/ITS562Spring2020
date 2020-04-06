@@ -1,8 +1,6 @@
 # ITS562Spring2020
 
 Class team github for doing a COVID site
-Note that this github site's master branch is viewable as a website at
-> [https://rainman21.github.io/ITS562Spring2020/](https://rainman21.github.io/ITS562Spring2020/)
 
 ## Samples
 
