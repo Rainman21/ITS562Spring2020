@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ITS562</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("select.stats").change(function(){
+        var selection = $(this).children("option:selected").val();
+            $.getJSON(`https://corona.lmao.ninja/${selection}`, function(data) {
+            if (selection == "all") {
+            var text = `
+                    Cases: ${data.cases}<br>
+                    Today Cases: ${data.todayCases}<br>
+                    Deaths: ${data.deaths}<br>
+                    Today Deaths: ${data.todayDeaths}<br>
+                    Recovered: ${data.recovered}<br>
+                    active: ${data.active}<br>
+                    Cases Per One Million: ${data.casesPerOneMillion}<br>
+                    Deaths Per One Million: ${data.deathsPerOneMillion}<br>
+                    Tests Performed: ${data.tests}<br>
+                    Tests Per One Million: ${data.testsPerOneMillion}<br>
+                    Affected Countries: ${data.affectedCountries}<br>`
+                    
+        
+            $(".mypanel").html(text);
+            } else if (selection == "states") {
+                var x ="";
+                for (i in data) {
+                    x += "<h2>" + data[i].state + "</h2>";
+                    x += "Cases = " + data[i].cases + "<br>";
+                    x += "Today Cases = " + data[i].todayCases + "<br>";
+                    x += "Deaths = " + data[i].deaths + "<br>";
+                    x += "Today Deaths = " + data[i].todayDeaths + "<br>";
+                    x += "Active = " + data[i].active + "<br>";
+                    x += "Tests = " + data[i].tests + "<br>";
+                    x += "Tests Per Million = " + data[i].testsPerOneMillion + "<br>";
+                    
+                }
+            document.getElementById("printer").innerHTML = x;
+            } else if (selection == "select one") {
+               var message = "Please select one of the options"
+               $(".mypanel").html(message);
+            }
+        });
+    
+    });
+});
+
+function lookForCountry(b) {
+    
+    $.getJSON(`https://corona.lmao.ninja/countries/${b}`, function(data) {
+        var text2 = `
+                        Cases: ${data.cases}<br>
+                        Today Cases: ${data.todayCases}<br>
+                        Deaths: ${data.deaths}<br>
+                        Today Deaths: ${data.todayDeaths}<br>
+                        Recovered: ${data.recovered}<br>
+                        active: ${data.active}<br>
+                        Critical: ${data.critical}<br>
+                        Cases Per One Million: ${data.casesPerOneMillion}<br>
+                        Deaths Per One Million: ${data.deathsPerOneMillion}<br>
+                        Tests Performed: ${data.tests}<br>
+                        Tests Per One Million: ${data.testsPerOneMillion}<br>`
+                        
+            
+                $(".mypanel").html(text2);
+    
+  });
+}
+</script>
+<style>
+    h2 {
+        color: green;
+    }
+</style>
+</head> 
+<body>
+    <form>
+        <label>Select Statistics:</label>
+        <select class="stats">
+            <option value="all">select one</option>
+            <option value="all">all</option>
+            <option value="states">Per States</option>
+            
+        </select>
+    </form>
+    <form class="well" name="formInput" action= "#">
+        <label>Type a Country</label>
+        <input Id="txtvarInput" class="span3" style="margin: 0pt auto;" type="text" placeholder="usa, turkey, brazil..."/>               
+        </label>
+        <div class="form-actions span3">
+            <input name="submit" type="submit" class="btn" value="Select" onclick="lookForCountry(document.getElementById('txtvarInput').value);"/>
+        </div>
+    </form>
+
+    <div class="mypanel" id="printer">
+    
+
+    </div>
+</body>
+</html> 
+
+
+
+
+
