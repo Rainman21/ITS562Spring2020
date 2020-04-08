@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<style>
+  /* set the CSS */
+
+  .line {
+    fill: none;
+    stroke-width: 2px;
+  }
+  .usa {
+    stroke: rgb(141, 49, 49);
+  }
+  .italy {
+    stroke: steelblue;
+  }
+</style>
+<body>
+  <!-- load the d3.js library -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script>
+    // set the dimensions and margins of the graph
+    var margin = { top: 20, right: 20, bottom: 30, left: 50 },
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+    // parse the date / time
+    var parseTime = d3.timeParse('%d-%b-%y');
+
+    // set the ranges
+    var x = d3.scaleTime().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+    // define the line
+    var valueline = d3
+      .line()
+      .x(function(d) {
+        return x(d.date);
+      })
+      .y(function(d) {
+        return y(d.count);
+      });
+
+    // append the svg obgect to the body of the page
+    // appends a 'group' element to 'svg'
+    // moves the 'group' element to the top left margin
+    var svg = d3
+      .select('body')
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    //reshapes the data into a more suitable form
+    const reshapeData = function(data) {
+      let reshapedObject = {};
+      data.forEach(element => {
+        let reshapedEntry = {};
+        reshapedEntry.timeline = [];
+        reshapedEntry.name = element.country;
+        if (element.province !== null) {
+          reshapedEntry.name += '-' + element.province;
+        }
+        console.log(`processing ${reshapedEntry.name}`);
+        let keys = Object.keys(element.timeline.cases);
+        reshapedEntry.minDate = null;
+        reshapedEntry.maxDate = null;
+        reshapedEntry.maxCount = 0;
+
+        keys.forEach(entry => {
+          let caseDate = Date.parse(entry);
+          let caseCount = element.timeline.cases[entry];
+          let caseEntry = {};
+          caseEntry.date = caseDate;
+          caseEntry.count = +caseCount;
+          if (caseEntry.count > reshapedEntry.maxCount) {
+            reshapedEntry.maxCount = caseEntry.count;
+          }
+          if (reshapedEntry.minDate === null) {
+            reshapedEntry.minDate = reshapedEntry.maxDate = caseEntry.date;
+          } else {
+            if (caseEntry.date > reshapedEntry.maxDate) {
+              reshapedEntry.maxDate = caseEntry.date;
+            }
+          }
+          reshapedEntry.maxDate = new Date(reshapedEntry.maxDate);
+          reshapedEntry.minDate = new Date(reshapedEntry.minDate);
+          reshapedEntry.timeline.push(caseEntry);
+        });
+        reshapedObject[reshapedEntry.name] = reshapedEntry;
+      });
+      return reshapedObject;
+    };
+
+    //https://corona.lmao.ninja/v2/historical
+    //HistoricCovidExample.json
+    // Get the data - this is async, so basically the callback does it all
+    d3.json('https://corona.lmao.ninja/v2/historical', function(error, data) {
+      if (error) throw error;
+
+      //  let usaData = getCountryData(data, 'usa', '');
+      //  let italyData = getCountryData(data, 'italy', '');
+      //  let sKoreaData = getCountryData(data, 's. korea', '');
+      let provinceData = reshapeData(data);
+      let usaData = provinceData['usa'];
+      let italyData = provinceData['italy'];
+
+      //let provinceMap = new Map();
+
+      // provinceData.forEach((province) =>{
+      //   provinceMap
+      // })
+      console.log(`-----USA -------
+      minDate=${usaData.minDate.toDateString()}
+      maxDate=${usaData.maxDate.toDateString()}
+      count ${usaData.maxCount}
+      `);
+      console.log(`-----Italy -------
+      minDate=${italyData.minDate.toDateString()}
+      maxDate=${italyData.maxDate.toDateString()}
+      count ${italyData.maxCount}
+      `);
+      // Scale the range of the data
+      x.domain(
+        d3.extent(usaData.timeline, function(d) {
+          return d.date;
+        })
+      );
+      y.domain([
+        0,
+        d3.max(usaData.timeline, function(d) {
+          return d.count;
+        })
+      ]);
+
+      // Add the valueline path.
+      svg
+        .append('path')
+        .data([usaData.timeline])
+        .attr('class', 'line usa')
+        .attr('d', valueline);
+
+      svg
+        .append('path')
+        .data([italyData.timeline])
+        .attr('class', 'line italy')
+        .attr('d', valueline);
+
+      // Add the X Axis
+      svg
+        .append('g')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(d3.axisBottom(x));
+
+      // Add the Y Axis
+      svg.append('g').call(d3.axisLeft(y));
+    });
+  </script>
+</body>

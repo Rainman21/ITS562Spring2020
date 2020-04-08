@@ -14,6 +14,8 @@ $(document).ready(function(){
                     Cases: ${data.cases}<br>
                     Today Cases: ${data.todayCases}<br>
                     Deaths: ${data.todayDeaths}<br>
+                    Deaths: ${data.deaths}<br>
+                    Today Deaths: ${data.todayDeaths}<br>
                     Recovered: ${data.recovered}<br>
                     active: ${data.active}<br>
                     Cases Per One Million: ${data.casesPerOneMillion}<br>
@@ -46,6 +48,28 @@ $(document).ready(function(){
     
     });
 });
+
+function lookForCountry(b) {
+    
+    $.getJSON(`https://corona.lmao.ninja/countries/${b}`, function(data) {
+        var text2 = `
+                        Cases: ${data.cases}<br>
+                        Today Cases: ${data.todayCases}<br>
+                        Deaths: ${data.deaths}<br>
+                        Today Deaths: ${data.todayDeaths}<br>
+                        Recovered: ${data.recovered}<br>
+                        active: ${data.active}<br>
+                        Critical: ${data.critical}<br>
+                        Cases Per One Million: ${data.casesPerOneMillion}<br>
+                        Deaths Per One Million: ${data.deathsPerOneMillion}<br>
+                        Tests Performed: ${data.tests}<br>
+                        Tests Per One Million: ${data.testsPerOneMillion}<br>`
+                        
+            
+                $(".mypanel").html(text2);
+    
+  });
+}
 </script>
 <style>
     h2 {
@@ -64,6 +88,17 @@ $(document).ready(function(){
         </select>
     </form>
     <div class="mypanel" id="printer">
+    <form class="well" name="formInput" action= "#">
+        <label>Type a Country</label>
+        <input Id="txtvarInput" class="span3" style="margin: 0pt auto;" type="text" placeholder="usa, turkey, brazil..."/>               
+        </label>
+        <div class="form-actions span3">
+            <input name="submit" type="submit" class="btn" value="Select" onclick="lookForCountry(document.getElementById('txtvarInput').value);"/>
+        </div>
+    </form>
+
+    <div class="mypanel" id="printer">
+    
 
     </div>
 </body>

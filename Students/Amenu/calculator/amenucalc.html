@@ -3,48 +3,73 @@
   <head>
     <title>Calculator</title>
     <style>
-      body *{
-        box-sizing: content-box;
-      }
+      {
+  box-sizing: border-box;
+  
+}
 
-      body  {
-        margin: 0;
-        font-family: 'Nunito';
-        background: #eeeeee;
-        display: grid;
-        place-items: center;
-        height: 100vh;
-      }
+body {
+ 
+  background: #;
+   padding-bottom: 40px;
+  padding-top: 30px;
+  
+}
 
-      .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-gap: 10px;
-        padding: 10px;
-      }
+.calculator{
+  max-width: 400px;
+  margin: 2 auto;
+  border: 4px solid #114;
+  border-radius: 5px;
+}
 
-      .container {
-        padding: 13m;
-        border-radius: 0.5em;
-        box-shadow: -12px -12px 12px 0 rgba(255, 255, 255, 1),
-          12px 12px 12px 0 rgba(0, 0, 0, 0.3);
-      }
-      .calc-control > button,
-      .calc-control > input
-       {
-        /* padding: 13m; */
-        height: 2em;
-        width: 4em;
-        margin-left: 0.2em;
-        border-radius: 0.5em;
-        box-shadow: -4px -4px 4px 0 rgba(255, 255, 255, 1),
-          4px 4px 4px 0 rgba(0, 0, 0, 0.3);
-      }
-      #mainText {
-      width: 80%;
-      margin: .5em;
-      padding-left: 0.3rem;
-    }
+.calculator input {
+  backgorund: none;
+  border: none;
+  box-shadow: none;
+  widith: 100%;
+  border-bottom: 2px solid #115;
+  padding: 40px;
+  text-align: right;
+  font-size: 25px;
+  
+  
+}
+
+.calc-control{
+  padding: 10px;
+  display: grid;
+  
+  grip-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.calc-button{
+  background: rgba(0,0,0,0.5);
+  border: 2px solid #111;
+  padding: 15px;
+  color: #EEE;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  
+}
+
+.is-clear,
+.is-zero{
+
+  grid-column: span 3;
+  
+}
+
+.is-clear{
+  background:#32678d;
+}
+
+.is-equals{
+  background: #28d606
+}
     </style>
   </head>
   <body>
