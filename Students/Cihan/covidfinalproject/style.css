@@ -1,0 +1,95 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+
+body{
+
+    background-color: aquamarine;
+    margin: center;
+    margin-right: 10rem;
+    position: fixed;
+    width: 100%;
+    top: 20%;
+    left: 40%;
+    background-size: cover;
+    background-image: url(bkr.png);
+    font-family: montserrat;
+
+}
+header{
+    font-style: italic;
+    margin-top: inherit;
+    padding: -20 80px;
+    color: lightsalmon;
+    font-size: 200%;
+    margin: center;
+    
+}
+
+
+label{
+    font-stretch: extra-condensed;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-variant: inherit;
+    color:rgb(102, 18, 18);
+    text-transform: uppercase;
+   
+
+    
+    
+}
+
+
+.social-icons{
+    right: 50px;
+    bottom: 80px;
+    position: sticky;
+}
+
+.social-icons ul li{
+    list-style: none;
+    margin-top: 10px;
+    text-align: center;
+}
+.social-icons ul li a{
+    color: rgb(201, 15, 15);
+    border-radius: -10%;
+    border: 1px solid #999;
+    padding: 5px;
+    display: inline-flex;
+}
+.quick-links ul{
+    display: inline-flex;
+    margin: 30px auto;
+    text-align: center;
+}
+.social-media{
+ 
+        display: inline-flex;
+        margin: 20px auto;
+        text-align: center;
+        color: rgb(59, 28, 16);
+        display: inline;
+
+
+    }
+
+    
+#printer{
+    color: black;
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+#txtvarInput{
+    color: blueviolet;
+}
+
+
