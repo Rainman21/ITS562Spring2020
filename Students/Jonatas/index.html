@@ -84,10 +84,35 @@ function lookForState(s) {
     
   });
 }
+function lookForCounty(state, date) {
+    
+    $.getJSON(`https://corona.lmao.ninja/v2/historical/usacounties/${state}?lastdays=${date}`, function(data) {
+        var counties ="";
+        for (i in data) {
+            counties += `<h2>${data[i].province}</h2>`;
+            counties += `<h3>${data[i].county}</h3>`;
+            for (let [date, caseCount] of Object.entries(data[i].timeline.cases)) {
+                counties += `<h4>Date: ${date}</h4>`
+                counties += `<p>Cases: ${caseCount}</p>`;
+                counties += `<p>Deaths: ${data[i].timeline.deaths[date]}</p>`;
+            }
+
+        }
+        
+            document.getElementById("printer").innerHTML = counties;
+    
+  });
+}
 </script>
 <style>
     h2 {
         color: green;
+    }
+    h3 {
+        color: blue;
+    }
+    h4 {
+        color: purple;
     }
 </style>
 </head> 
@@ -114,6 +139,17 @@ function lookForState(s) {
         </label>
         <div class="form-actions span4">
             <input name="submit" type="submit" class="btn" value="Select" onclick="lookForState(document.getElementById('txtvarInput2').value);"/>
+        </div>
+    </form>
+    <form class="well" name="formInput" action= "#">
+        <label>To see historical data by county type a State</label>
+        <input Id="txtvarInput3" class="span5" style="margin: 0pt auto;" type="text" placeholder="california, colorado, ohio..."/>               
+        </label>
+        <label>How many days?</label>
+        <input Id="txtvarInput4" class="span5" style="margin: 0pt auto;" type="text" placeholder="1, 2, 3..."/>               
+        </label>
+        <div class="form-actions span5">
+            <input name="submit" type="submit" class="btn" value="Select" onclick="lookForCounty(document.getElementById('txtvarInput3').value, document.getElementById('txtvarInput4').value);"/>
         </div>
     </form>
     <div class="mypanel" id="printer">
