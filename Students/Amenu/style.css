@@ -1,0 +1,92 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+
+body{
+
+    background-color:wheat;
+    position:absolute;
+    width:100px;
+    height:100px;
+
+  left:10px;
+  top:10px;
+
+}
+header{
+    font-style: bold;
+    margin-top: inherit;
+    padding: -20 80px;
+    color: lightsalmon;
+    font-size: 200%;
+    margin: left;
+    
+}
+
+
+label{
+    font-stretch: extra-condensed;
+    font-size: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-variant: inherit;
+    color:rgb(102, 18, 18);
+    text-transform: uppercase;
+   
+
+    
+    
+}
+
+
+
+    
+#printer{
+    color: black;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+#txtvarInput{
+    color: blueviolet;
+}
+form{
+    padding: 3px;
+    font-style: oblique;
+    border: 2px solid #ccc;
+    border-radius: 17px;
+    box-sizing: border-box;
+    margin: 8px;
+
+}
+
+input::placeholder {
+    color:black;
+    font-size: 1.2em;
+    font-style: italic;
+    border: 6px  black;
+    padding: 5px;
+     
+  }
+  select{
+    position: relative;
+    display: inline-block;
+    font-style: inherit;
+   
+    background-color: #f9f9f9;
+    min-width: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 7;
+  
+  }
+  div{
+      font-size: 15px;
+      border-radius: 14px;
+      box-sizing: border-box;
+      padding: 5px;
+  }
