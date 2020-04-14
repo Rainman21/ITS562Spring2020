@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <title>ITS562</title>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link
+rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+<link rel="stylesheet" href="styles.css">
 <script>
 $(document).ready(function(){
     $("select.stats").change(function(){
@@ -39,9 +49,6 @@ $(document).ready(function(){
                     
                 }
             document.getElementById("printer").innerHTML = x;
-            } else if (selection == "select one") {
-               var message = "Please select one of the options"
-               $(".mypanel").html(message);
             }
         });
     
@@ -69,56 +76,99 @@ function lookForCountry(b) {
     
   });
 }
+function lookForState(s) {
+    
+    $.getJSON(`https://corona.lmao.ninja/states/${s}`, function(data) {
+        var text2 = `
+                        <h2> ${data.state} </h2>
+                        Cases: ${data.cases}<br>
+                        Today Cases: ${data.todayCases}<br>
+                        Deaths: ${data.deaths}<br>
+                        Today Deaths: ${data.todayDeaths}<br>
+                        active: ${data.active}<br>
+                        Tests Performed: ${data.tests}<br>
+                        Tests Per One Million: ${data.testsPerOneMillion}<br>`
+                        
+            
+                $(".mypanel").html(text2);
+    
+  });
+}
+function lookForCounty(state, date) {
+    
+    $.getJSON(`https://corona.lmao.ninja/v2/historical/usacounties/${state}?lastdays=${date}`, function(data) {
+        var counties ="";
+        for (i in data) {
+            counties += `<h2>${data[i].province}</h2>`;
+            counties += `<h3>${data[i].county}</h3>`;
+            for (let [date, caseCount] of Object.entries(data[i].timeline.cases)) {
+                counties += `<h4>Date: ${date}</h4>`
+                counties += `<p>Cases: ${caseCount}</p>`;
+                counties += `<p>Deaths: ${data[i].timeline.deaths[date]}</p>`;
+            }
+
+        }
+        
+            document.getElementById("printer").innerHTML = counties;
+    
+  });
+}
 </script>
 <style>
     h2 {
         color: green;
     }
+    h3 {
+        color: blue;
+    }
+    h4 {
+        color: purple;
+    }
 </style>
-</head> 
-<body>
-    <nav class="navbar navbar-dark navbar-expand-sm fixed-top"> 
-        <div class="container">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <a class="navbar-brand mr-auto" href="#"><img src=images/covd.jpg height="30" width="41"></a> 
-              <div class="collapse navbar-collapse" id="Navbar">
-                  <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active"><a class="nav-link" href="index.html"><span class="fa fa-home fa-lg"></span> Home</a></li>
-                      <li class="nav-item"><a class="nav-link"  href="#"><span class="fa fa-info fa-lg"></span> About</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Latest</a></li>
-                      <li class="nav-item"><a class="nav-link"  href="statistics.html"><span class="fa fa-address-card fa-lg"></span> Statistics</a></li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-    <form>
+</head>
+<body class="body-stats">
+<div>
+    <button type="button" class="btn btn-outline-primary"><a class="nav-link" href="./index.html"> Home</a></button>
+</div> 
+
+    <form class="form-stats">
         <label>Select Statistics:</label>
         <select class="stats">
-            <option value="all">select one</option>
-            <option value="all">all</option>
-            <option value="states">Per States</option>
+            <option value="all">World Wide Count</option>
+            <option value="states">All States</option>
             
         </select>
     </form>
-    <form class="well" name="formInput" action= "#">
+    <form class="well form-stats" name="formInput" action= "#">
         <label>Type a Country</label>
-        <input Id="txtvarInput" class="span3" style="margin: 0pt auto;" type="text" placeholder="usa, turkey, brazil..."/>               
+        <input Id="txtvarInput" class="span3 input-stats" style="margin: 0pt auto;" type="text" placeholder="usa, turkey, brazil..."/>               
         </label>
         <div class="form-actions span3">
             <input name="submit" type="submit" class="btn" value="Select" onclick="lookForCountry(document.getElementById('txtvarInput').value);"/>
         </div>
     </form>
-
-    <div class="mypanel" id="printer">
+    <form class="well form-stats" name="formInput" action= "#">
+        <label>Type a State</label>
+        <input Id="txtvarInput2" class="span4 input-stats" style="margin: 0pt auto;" type="text" placeholder="massachusetts, new york, virginia..."/>               
+        </label>
+        <div class="form-actions span4">
+            <input name="submit" type="submit" class="btn input-stats" value="Select" onclick="lookForState(document.getElementById('txtvarInput2').value);"/>
+        </div>
+    </form>
+    <form class="well form-stats" name="formInput" action= "#">
+        <label>To see historical data by county type a State</label>
+        <input Id="txtvarInput3" class="span5 input-stats" style="margin: 0pt auto;" type="text" placeholder="california, colorado, ohio..."/>               
+        </label>
+        <label>How many days?</label>
+        <input Id="txtvarInput4" class="span5 input-stats" style="margin: 0pt auto;" type="text" placeholder="1, 2, 3..."/>               
+        </label>
+        <div class="form-actions span5">
+            <input name="submit" type="submit" class="btn input-stats" value="Select" onclick="lookForCounty(document.getElementById('txtvarInput3').value, document.getElementById('txtvarInput4').value);"/>
+        </div>
+    </form>
+    <div class="mypanel printer-stats" id="printer">
     
 
     </div>
 </body>
 </html> 
-
-
-
-
-
