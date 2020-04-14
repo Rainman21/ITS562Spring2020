@@ -1,0 +1,53 @@
+body{
+    background-color: antiquewhite;
+}
+
+.container{
+    color: black;
+}
+form{
+    border: 2px solid rgb(224, 211, 211);
+    width: 30%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color: rgb(245, 76, 9);
+   color: white;
+   border-radius: 30px;
+  
+}
+
+input[type=submit]:hover {
+    background-color: #085508;
+}
+
+input[type=text] {
+    transition: width 0.4s ease-in-out;
+    
+  }
+
+  input[type=text]:focus {
+    border: 6px solid #555;
+  }
+  
+  input[type=text]:focus {
+    width: 100%;
+  }
+  #printer{
+      font-size: large;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      padding: 5px;
+      background-color: whitesmoke;
+      width: 370px;
+      position: absolute;
+      padding-bottom: 20px;
+      display: inline-block;
+      border-radius: 30px;
+     
+
+  }
+h2{
+    text-align: center;
+}
